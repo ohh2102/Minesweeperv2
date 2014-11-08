@@ -227,7 +227,7 @@ def Get_or_Play():
                 Board.board[j].avail=0
                 Board.board[j].showing=True
             elif Board.board[j].save_val==0:
-                Board.board[j].loc_value==0
+                Board.board[j].loc_value=0
             else:
                 Board.board[j].loc_value=Board.board[j].save_val
                 Board.board[j].avail=0
