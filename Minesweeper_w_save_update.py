@@ -106,7 +106,7 @@ class Game_Board:
             print "YOU WIN"
             return 1
         else:
-            0
+            return 0
     def save_game(self, filename1, filename2):
         f=open(filename1, 'w')
         sorted_dict=sorted(self.board)
