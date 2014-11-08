@@ -58,7 +58,7 @@ class Game_Board:
                     self.board[(column,row)].showing=True
                     self.board[(column,row)].loc_value='x'
                     self.board[(column,row)].save_value=-2
-                    self.board[(column,row)].avail=1
+                    self.board[(column,row)].avail=0
                     for adj in self.board[(column,row)].adj_cord:
                        self.board[adj].showing=True
                        self.board[adj].loc_value='x'
