@@ -220,15 +220,15 @@ def Get_or_Play():
         for j in Board.board:
             if Board.board[j].save_val==-1:
                 Board.board[j].loc_mine.on_status=True
-                Board.board[j].loc_mine.avail=0
+                Board.board[j].avail=0
             elif Board.board[j].save_val==-2:
                 Board.board[j].loc_value='x'
-                Board.board[j].loc_mine.avail=0
+                Board.board[j].avail=0
             elif Board.board[j].save_val==0:
                 Board.board[j].loc_value==0
             else:
                 Board.board[j].loc_value=Board.board[j].save_val
-                Board.board[j].loc_mine.avail=0
+                Board.board[j].avail=0
         playing_status=True
         while playing_status==True:
             Board.print_board()
