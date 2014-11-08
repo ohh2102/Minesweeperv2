@@ -52,14 +52,14 @@ class Game_Board:
                 self.keys.append((i,k))
                 
     def player_pick(self, row, column):
-        if (row, column) in self.board and self.board[(row, column)].showing==False:
+        if (column,row) in self.board and self.board[(row, column)].showing==False:
             if self.board[(row,column)].loc_mine.on_status==False:
                 if all(self.board[adjacents].loc_mine.on_status==False for adjacents in self.board[(row,column)].adj_cord):
-                    self.board[(row,column)].showing=True
-                    self.board[(row,column)].loc_value='x'
-                    self.board[(row,column)].save_value=-2
-                    self.board[(row,column)].avail=1
-                    for adj in self.board[(row,column)].adj_cord:
+                    self.board[(column,row)].showing=True
+                    self.board[(column,row)].loc_value='x'
+                    self.board[(column,row)].save_value=-2
+                    self.board[(column,row)].avail=1
+                    for adj in self.board[(column,row)].adj_cord:
                        self.board[adj].showing=True
                        self.board[adj].loc_value='x'
                        self.board[adj].save_value=-2
@@ -67,13 +67,13 @@ class Game_Board:
                        
                 else:
                     adj_bombs=0
-                    self.board[(row,column)].avail=0
-                    for i in self.board[(row, column)].adj_cord:
+                    self.board[(column,row)].avail=0
+                    for i in self.board[(column,row)].adj_cord:
                        if self.board[i].loc_mine.on_status==True:
                            adj_bombs=adj_bombs+1
-                           self.board[(row,column)].loc_value=adj_bombs
-                           self.board[(row,column)].save_value=adj_bombs
-                           self.board[(row,column)].showing=True
+                           self.board[(column,row)].loc_value=adj_bombs
+                           self.board[(column,row)].save_value=adj_bombs
+                           self.board[(column,row)].showing=True
                            
                 return 1
             else:
@@ -94,9 +94,9 @@ class Game_Board:
     def print_board(self):
         rows_to_print=[]
         current_row=[]
-        for i in range(self.columns):
-            for j in range(self.rows):
-                current_row.append(self.board[(i,j)].loc_value)
+        for i in range(self.rows):
+            for j in range(self.columns):
+                current_row.append(self.board[(j,i)].loc_value)
             rows_to_print.append(current_row)
             current_row=[]
         for k in rows_to_print:
@@ -259,6 +259,15 @@ def Get_or_Play():
         
 
 Get_or_Play()       
+        
+        
+        
+    
+        
+        
+
+        
+     
         
         
         
